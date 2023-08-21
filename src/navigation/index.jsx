@@ -7,12 +7,12 @@ import { useSelector } from "react-redux";
 
 function RootNavigator() {
 
-    //const user = useSelector((state) => state.auth.user)
+    const user = useSelector((state) => state.auth.user)
     //{ user?.localId ? <TabNavigator /> : <AuthNavigator />}
 
     return (
         <NavigationContainer>
-           <TabNavigator />
+           { user?.localId ? <TabNavigator /> : <AuthNavigator />}
         </NavigationContainer>
     )
 }

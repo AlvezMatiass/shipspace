@@ -1,5 +1,5 @@
 export const URL_BASE_FIREBASE_REALTIME_DATABASE = 
-'https://coderhousereactnativematias-default-rtdb.firebaseio.com'
+'https://shipspace-ea24f-default-rtdb.firebaseio.com/'
 
 export const FIREBASE_API_KEY = 
 'AIzaSyA0hhGzzbdL2VSdKB1PVBoWIO09bPv30B4'

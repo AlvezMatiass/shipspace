@@ -1,9 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons, Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import MenuNavigator from "./menu";
 import CreateNavigator from "./create";
 import ProfileNavigator from "./profile";
 import { COLORS } from "../themes";
+import { TouchableOpacity, Text } from "react-native";
+import { CreateButton } from "../components";
 
 const BottomTab = createBottomTabNavigator()
 
@@ -32,7 +34,7 @@ const TabNavigator = () => {
             }} 
             />
             <BottomTab.Screen 
-            name="CreateTab" 
+            name='Create' 
             component={CreateNavigator}
             options={{
                 tabBarLabel: '',

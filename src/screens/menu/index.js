@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
 import { styles } from './styles';
 import { Publication } from '../../components';
 import { useSelector } from 'react-redux';
+import { useSingUpUserDataMutation } from '../../store/users/api';
+import { useState } from 'react';
 
 const Menu = ({ navigation }) => {
 

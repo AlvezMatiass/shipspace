@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { FIREBASE_AUTH_BASE_URL, FIREBASE_AUTH_SING_IN_API, FIREBASE_AUTH_SING_UP_API } from '../../../constants/firebase/index'
+import { FIREBASE_AUTH_BASE_URL, FIREBASE_AUTH_SING_IN_API, FIREBASE_AUTH_SING_UP_API, URL_BASE_FIREBASE_REALTIME_DATABASE } from '../../../constants/firebase/index'
 import { createSelector } from '@reduxjs/toolkit'
 
 export const authApi = createApi({
@@ -20,7 +20,7 @@ export const authApi = createApi({
                 method: 'POST',
                 body: credential
             })
-        })
+        }),
     })
 })
 

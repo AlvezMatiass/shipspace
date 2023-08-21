@@ -3,8 +3,9 @@ import { styles } from './style';
 import { useEffect, useState } from 'react';
 import { COLORS } from '../../themes';
 import { useSignInMutation, useSignUpMutation } from '../../store/auth/api';
+import { useSingUpUserDataMutation } from '../../store/users/api';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../store/auth/auth.slice';
+import { setLocalId, setUser } from '../../store/auth/auth.slice';
 
 const Auth = () => {
 
@@ -19,7 +20,7 @@ const Auth = () => {
     const messageText = isLogin ? 'Need an account?' : 'Already have an account?'
 
     const [signIn, {data}] = useSignInMutation();
-
+    
     const [signUp] = useSignUpMutation()
 
     const onHandlerAuth = async () => {
