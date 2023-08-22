@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import TabNavigator from "./tabs";
 import AuthNavigator from "./auth";
 import { useSelector } from "react-redux";
+import CreateUserDataNavigator from "./create";
 
 
 function RootNavigator() {

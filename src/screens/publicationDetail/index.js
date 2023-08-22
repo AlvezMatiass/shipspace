@@ -20,9 +20,6 @@ const PublicationDetail = ({ navigation, route }) => {
                     </View>
             </View>
             <Text style={styles.publicationText}>{publi.publicationText}</Text>
-            <View style={styles.publicationImageContainer}>
-                <Image resizeMode='contain' source={{uri: 'https://esports.as.com/2023/07/31/league-of-legends/Season-Finals_1706839310_1159252_667x386.jpg'}} style={styles.publicationImage}/>
-            </View>
         </ScrollView>
     )
 }

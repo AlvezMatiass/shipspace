@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Profile } from "../screens";
+import { Profile, CreateUserData } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -9,6 +9,7 @@ function ProfileNavigator() {
             headerShown: false,
         }}>
             <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="CreateUserData" component={ CreateUserData } />
         </Stack.Navigator>
     )
 }

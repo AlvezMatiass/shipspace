@@ -37,12 +37,4 @@ export const styles = StyleSheet.create({
         color: COLORS.textWhite,
         marginHorizontal: 8,
     },
-    publicationImageContainer: {
-        height: 240
-    },
-    publicationImage: {
-        flex: 1,
-        marginHorizontal: 8,
-        marginVertical: 12
-    },
 })

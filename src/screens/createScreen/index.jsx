@@ -18,6 +18,7 @@ const CreateScreen = () => {
             autoCorrect={false}
             style={styles.input}
             textAlignVertical='top'
+            maxLength={320}
             />
         </View>
     )

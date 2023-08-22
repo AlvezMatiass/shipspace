@@ -8,13 +8,29 @@ export const usersApi = createApi({
     tagTypes: ['Users'],
     endpoints: (builder) => ({
         singUpUserData: builder.mutation ({
-            query: (userData) => ({
-                url: `/users.json`,
-                method: 'POST',
-                body: userData
+            query: ({localId, username, shipid}) => ({
+                url: `/users/${localId}.json`,
+                method: 'PATCH',
+                body: {
+                    username,
+                    shipid
+                }
             })
-        })
+        }),
+        getProfile: builder.query({
+            query: ({ localId }) => ({
+              url: `/users/${localId}.json`,
+              method: 'GET',
+            }),
+        }),
+        updateImageProfile: builder.mutation({
+            query: ({ localId, image }) => ({
+              url: `/users/${localId}.json`,
+              method: 'PATCH',
+              body: { profileImage: image },
+            }),
+        }),
     })
 })
 
-export const { useSingUpUserDataMutation } = usersApi;
+export const { useSingUpUserDataMutation, useGetProfileQuery, useUpdateImageProfileMutation } = usersApi;

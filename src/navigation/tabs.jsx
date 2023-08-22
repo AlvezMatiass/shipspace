@@ -4,8 +4,6 @@ import MenuNavigator from "./menu";
 import CreateNavigator from "./create";
 import ProfileNavigator from "./profile";
 import { COLORS } from "../themes";
-import { TouchableOpacity, Text } from "react-native";
-import { CreateButton } from "../components";
 
 const BottomTab = createBottomTabNavigator()
 
@@ -37,6 +35,7 @@ const TabNavigator = () => {
             name='Create' 
             component={CreateNavigator}
             options={{
+                animation: 'slide_from_right',
                 tabBarLabel: '',
                 tabBarIcon: ({focused}) => (
                     <Ionicons name={focused ? "create" : "create-outline"} size={24} color={COLORS.textWhite} />

@@ -3,9 +3,8 @@ import { styles } from './style';
 import { useEffect, useState } from 'react';
 import { COLORS } from '../../themes';
 import { useSignInMutation, useSignUpMutation } from '../../store/auth/api';
-import { useSingUpUserDataMutation } from '../../store/users/api';
 import { useDispatch } from 'react-redux';
-import { setLocalId, setUser } from '../../store/auth/auth.slice';
+import { setUser } from '../../store/auth/auth.slice';
 
 const Auth = () => {
 

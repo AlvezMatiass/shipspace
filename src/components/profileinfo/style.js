@@ -42,4 +42,16 @@ export const styles = StyleSheet.create({
         color: COLORS.textWhite,
         marginRight: 12,
     },
+    createProfileButton: {
+        paddingVertical: 2,
+        backgroundColor: COLORS.textWhite,
+        marginTop: 6,
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: 12
+    },
+    createProfileButtonText: {
+        fontFamily: 'Inter-Medium',
+        fontSize: 12
+    }
 })

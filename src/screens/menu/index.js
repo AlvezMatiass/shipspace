@@ -13,6 +13,8 @@ const Menu = ({ navigation }) => {
 
     const publication = useSelector((state) => state.publication.data)
 
+    const data = useSelector((state) => state.auth.user)
+
     return (
         <View style={styles.container}>
             <FlatList
