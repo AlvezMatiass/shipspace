@@ -3,8 +3,8 @@ import { COLORS } from "../../themes";
 
 export const styles = StyleSheet.create({
     container: {
-        width: 100,
-        height: 100,
+        width: 90,
+        height: 90,
         backgroundColor: COLORS.textWhite,
         borderRadius: 100
     },
@@ -14,8 +14,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     imageProfile: {
-        height: 100,
-        width: 100,
+        height: 90,
+        width: 90,
         borderRadius: 100
     },
 })

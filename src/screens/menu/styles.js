@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         backgroundColor: COLORS.secundaryBackground,
         borderBottomColor: COLORS.extraColor,
         borderBottomWidth: 1,
-        paddingVertical: 10,
+        paddingVertical: 14,
         paddingHorizontal: 8,
         gap: 10
     },
@@ -42,5 +42,33 @@ export const styles = StyleSheet.create({
         color: COLORS.textWhite,
         fontSize: 14,
         fontFamily: 'Inter-Light',
+    },
+    loading: {
+        flex: 1,
+        backgroundColor: COLORS.secundaryBackground,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    noPublicationContain: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: COLORS.secundaryBackground
+    },
+    noPublication: {
+        fontFamily: 'Inter-Bold',
+        fontSize: 16,
+        color: COLORS.textWhite
+    },
+    noPublicationSub: {
+        fontFamily: 'Inter-Regular',
+        fontSize: 14,
+        opacity: .4,
+        color: COLORS.textWhite
+    },
+    deletePublication: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 4
     },
 })

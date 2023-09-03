@@ -28,6 +28,7 @@ const Auth = () => {
                 signIn({email, password})
             } else {
                 signUp({email, password})
+                setIsLogin(!isLogin)
             }
         } catch (error) {
             console.error(error)

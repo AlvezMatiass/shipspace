@@ -14,7 +14,7 @@ const TabNavigator = () => {
         screenOptions={{
             headerShown: false,
             tabBarStyle: {
-                height: 60,
+                height: 56,
                 paddingTop: 12,
                 backgroundColor: COLORS.secundaryBackground,
                 borderTopWidth: .4
@@ -27,7 +27,7 @@ const TabNavigator = () => {
             options={{
                 tabBarLabel: '',
                 tabBarIcon: ({focused}) => (
-                    <Ionicons name={focused ? "home" : "home-outline"} size={24} color={COLORS.textWhite} />
+                    <Ionicons name={focused ? "home" : "home-outline"} size={22} color={COLORS.textWhite} />
                 )
             }} 
             />
@@ -38,7 +38,7 @@ const TabNavigator = () => {
                 animation: 'slide_from_right',
                 tabBarLabel: '',
                 tabBarIcon: ({focused}) => (
-                    <Ionicons name={focused ? "create" : "create-outline"} size={24} color={COLORS.textWhite} />
+                    <Ionicons name={focused ? "create" : "create-outline"} size={22} color={COLORS.textWhite} />
                 )
             }}
              />
@@ -48,7 +48,7 @@ const TabNavigator = () => {
             options={{
                 tabBarLabel: '',
                 tabBarIcon: ({focused}) => (
-                    <Ionicons name={focused ? "person" : "person-outline"} size={24} color={COLORS.textWhite} />
+                    <Ionicons name={focused ? "person" : "person-outline"} size={22} color={COLORS.textWhite} />
                 )
             }}
              />

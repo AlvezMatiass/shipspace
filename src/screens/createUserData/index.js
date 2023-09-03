@@ -1,9 +1,10 @@
-import { Text, View, TextInput, TouchableOpacity, ActivityIndicator } from "react-native";
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { styles } from "./style";
 import { COLORS } from "../../themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileQuery, useSingUpUserDataMutation, useUpdateImageProfileMutation } from "../../store/users/api";
+import { updateData } from "../../store/users/user.slice";
 import { ImageSelector } from "../../components";
 
 const CreateUserData = ({ navigation }) => {
@@ -13,32 +14,35 @@ const CreateUserData = ({ navigation }) => {
     const [username, setUsername] = useState('')
     const [shipid, setShipid] = useState('')
 
-    const localId = useSelector((state) => state.auth.user.localId)
-    const isButtonDisabled = username === '' || shipid === '';
+    const localId = useSelector((state) => state.auth.user.localId);
 
     const [ singUpUserData, { data, isLoading, error } ] = useSingUpUserDataMutation()
-    const [uploadImageProfile, { data: photoData, isLoading: isLoadingPhoto, error: errorPhoto }] = useUpdateImageProfileMutation()
-    const {data: userData, isLoading: isLoadingUserData} = useGetProfileQuery({localId})
+
+    const [uploadImageProfile, {data: photoData}] = useUpdateImageProfileMutation()
 
     const onHandlerImage =  async ({uri, base64}) => {
         await uploadImageProfile({ localId, image: `data:image/jpeg;base64,${base64}` })
     }
 
+    const isButtonDisabled = username === '' || shipid === '';
+
     const onHandlerUserData = async () => {
-        await singUpUserData({username, shipid, localId})
+        await singUpUserData({username, shipid, localId, profileImage: photoData.profileImage})
+
         navigation.navigate('Profile')
     }
+
+    useEffect(() => {
+        if(data) {
+            dispatch(updateData(data))
+        }
+    }, [data])
+
 
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                <ImageSelector profileImage={userData?.profileImage} onSelect={onHandlerImage}/>
-                {
-                    isLoading && (
-                        <View style={styles.loading}> 
-                            <ActivityIndicator  size='large' color={COLORS.text} />
-                        </View>
-                )}
+                <ImageSelector profileImage={data?.profileImage} onSelect={onHandlerImage}/>
             </View>
             <View style={styles.inputContain}>
                 <TextInput
@@ -48,17 +52,17 @@ const CreateUserData = ({ navigation }) => {
                     autoCapitalize='none'
                     autoCorrect={false}
                     value={username}
-                    maxLength={14}
+                    maxLength={20}
                     onChangeText={(text) => {setUsername(text)}}
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder='Enter a Shipid'
+                    placeholder='Enter a ShipID'
                     placeholderTextColor={COLORS.textWhite}
                     autoCapitalize='none'
                     autoCorrect={false}
                     value={shipid}
-                    maxLength={14}
+                    maxLength={20}
                     onChangeText={(text) => {setShipid(text)}}
                 />
             </View>
