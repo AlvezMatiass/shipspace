@@ -14,7 +14,7 @@ const PublicationDetail = ({ navigation, route }) => {
 
     const dispatch = useDispatch();
 
-    const [ commentsText, setCommentsText ] = useState('')
+    const [ commentsText, setCommentsText ] = useState("")
     const [refreshing, setRefreshing] = useState(false);
     const [commentKey, setCommentKey] = useState(0);
 
