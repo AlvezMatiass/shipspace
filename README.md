@@ -117,4 +117,6 @@ eas build -p android --profile development
 
 eas build --platform android
 
+## Aprender Patrones de React-Navite:
 
+https://www.patterns.dev/
