@@ -15,10 +15,25 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 8,
         gap: 10
     },
+    publicationTablet: {
+        flexDirection: 'row',
+        backgroundColor: COLORS.secundaryBackground,
+        borderBottomColor: COLORS.extraColor,
+        borderBottomWidth: 1,
+        paddingVertical: 32,
+        paddingHorizontal: 26,
+        gap: 10  
+    },
     userImage: {
         height: 38,
         width: 38,
         borderRadius: 100
+    },
+    userImageTablet: {
+        height: 56,
+        width: 56,
+        borderRadius: 100,
+        marginTop: 6
     },
     publicationInfo: {
         flex: 1,
@@ -28,19 +43,39 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 4
     },
+    userContainerTablet: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8
+    },
     userName: {
         color: COLORS.textWhite,
         fontFamily: 'Inter-Medium',
         fontSize: 15
+    },
+    userNameTablet: {
+        color: COLORS.textWhite,
+        fontFamily: 'Inter-Medium',
+        fontSize: 22
     },
     user: {
         color: COLORS.textWhite,
         fontSize: 12,
         opacity: .4
     },
+    userTablet: {
+        color: COLORS.textWhite,
+        fontSize: 19,
+        opacity: .4
+    },
     publicacionText: {
         color: COLORS.textWhite,
         fontSize: 14,
+        fontFamily: 'Inter-Light',
+    },
+    publicacionTextTablet: {
+        color: COLORS.textWhite,
+        fontSize: 19,
         fontFamily: 'Inter-Light',
     },
     loading: {

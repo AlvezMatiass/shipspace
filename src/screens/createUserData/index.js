@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileQuery, useSingUpUserDataMutation, useUpdateImageProfileMutation } from "../../store/users/api";
 import { updateData } from "../../store/users/user.slice";
 import { ImageSelector } from "../../components";
+import { insertDataUser } from "../../db";
 
 const CreateUserData = ({ navigation }) => {
 
@@ -28,7 +29,6 @@ const CreateUserData = ({ navigation }) => {
 
     const onHandlerUserData = async () => {
         await singUpUserData({username, shipid, localId, profileImage: photoData.profileImage})
-
         navigation.navigate('Profile')
     }
 

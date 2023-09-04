@@ -1,14 +1,16 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, useWindowDimensions } from 'react-native'
 import { styles } from './style';
 import { useEffect, useState } from 'react';
 import { COLORS } from '../../themes';
 import { useSignInMutation, useSignUpMutation } from '../../store/auth/api';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/auth/auth.slice';
+import { insertDataUser } from '../../db';
 
 const Auth = () => {
 
     const dispatch = useDispatch()
+    const {width} = useWindowDimensions()
 
     const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState('')
@@ -38,6 +40,13 @@ const Auth = () => {
     useEffect(() => {
         if(data) {
             dispatch(setUser(data))
+            insertDataUser({
+                email: data.email,
+                localId: data.localId,
+                token: data.idToken
+            })
+            .then()
+            .catch(error => console.log(error.message))
         }
     }, [data])
 
@@ -46,15 +55,14 @@ const Auth = () => {
         setPassword('')
         setEmail('')
     }
-
     
     return (
         <View style={styles.container}>
-            <View style={styles.content}>
-                <Text style={styles.header}>{headerTitle}</Text>
-                <Text style={styles.label}>Email</Text>
+            <View style={width > 660 ? styles.contentTablet : styles.content}>
+                <Text style={width > 660 ? styles.headerTablet : styles.header}>{headerTitle}</Text>
+                <Text style={width > 660 ? styles.labelTablet : styles.label}>Email</Text>
                 <TextInput
-                    style={styles.input}
+                    style={width > 660 ? styles.inputTablet : styles.input}
                     placeholder='email@domain.com'
                     placeholderTextColor={COLORS.textWhite}
                     autoCapitalize='none'
@@ -62,9 +70,9 @@ const Auth = () => {
                     value={email}
                     onChangeText={(text) => {setEmail(text)}}
                 />
-                <Text style={styles.label}>Password</Text>
+                <Text style={width > 660 ? styles.labelTablet : styles.label}>Password</Text>
                 <TextInput
-                    style={styles.input}
+                    style={width > 660 ? styles.inputTablet : styles.input}
                     placeholder='**********'
                     placeholderTextColor={COLORS.textWhite}
                     autoCapitalize='none'
@@ -74,14 +82,14 @@ const Auth = () => {
                     onChangeText={(text) => {setPassword(text)}}
                 />
             </View>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={onHandlerAuth}>
-                    <Text style={styles.buttonText}>{buttonTitle}</Text>
+            <View style={width > 660 ? styles.buttonContainerTablet : styles.buttonContainer}>
+                <TouchableOpacity style={width > 660 ? styles.buttonTablet : styles.button} onPress={onHandlerAuth}>
+                    <Text style={width > 660 ? styles.buttonTextTablet : styles.buttonText}>{buttonTitle}</Text>
                 </TouchableOpacity> 
             </View>
-            <View style={styles.linkContainer}>
-                <TouchableOpacity style={styles.link} onPress={onHandlerChangeAuth}>
-                    <Text style={styles.linkText}>{messageText}</Text>
+            <View style={width > 660 ? styles.linkContainerTablet : styles.linkContainer}>
+                <TouchableOpacity style={width > 660 ? styles.linkTablet : styles.link} onPress={onHandlerChangeAuth}>
+                    <Text style={width > 660 ? styles.linkTextTablet : styles.linkText}>{messageText}</Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -5,6 +5,15 @@ import RootNavigator from './navigation';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { COLORS } from './themes';
+import { init } from './db';
+
+init()
+  .then(() => {
+    console.log('se inicio')
+  })
+  .catch((err) => {
+    console.log('fallo')
+  })
 
 export default function App() {
 

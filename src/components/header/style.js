@@ -7,9 +7,21 @@ export const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: COLORS.secundaryBackground,
         borderBottomColor: COLORS.extraColor,
-        borderBottomWidth: .3
+        borderBottomWidth: .6
     },
-    heacerContent: {
+    containerTablet: {
+        height: 76,
+        width: '100%',
+        backgroundColor: COLORS.secundaryBackground,
+        borderBottomColor: COLORS.extraColor,
+        borderBottomWidth: .6
+    },
+    headerContent: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    headerContentTablet: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
@@ -17,5 +29,9 @@ export const styles = StyleSheet.create({
      headerImage: {
         height: 40,
         width: 40,
-    }
+    },
+    headerImageTablet: {
+        height: 60,
+        width: 60,
+    },
 })

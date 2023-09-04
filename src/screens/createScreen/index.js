@@ -1,4 +1,4 @@
-import { View, Text, TextInput, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, ActivityIndicator, TouchableOpacity, useWindowDimensions } from 'react-native'
 import { styles } from './styles';
 import { COLORS } from '../../themes';
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { useUploadPublicationMutation } from '../../store/publications/api';
 
 const CreateScreen = ({navigation}) => {
 
+    const {width} = useWindowDimensions()
     const [ publicationText, setPublicationText ] = useState('')
     const isButtonDisabled = publicationText === ''
 
@@ -28,9 +29,9 @@ const CreateScreen = ({navigation}) => {
     if(!userData?.username && !userInfo) {
         return (
             <View style={styles.container}>
-                <View style={styles.noUserContain}>
-                    <Text style={styles.noUserText}>No User Detection</Text>
-                    <Text style={styles.noUserTextSub}>Go to Profile and create User and ShipId to be able to publish, don't forget to upload a picture!</Text>
+                <View style={width > 660 ? styles.noUserContainTablet : styles.noUserContain}>
+                    <Text style={width > 660 ? styles.noUserTextTablet : styles.noUserText}>No User Detection</Text>
+                    <Text style={width > 660 ? styles.noUserTextSubTablet : styles.noUserTextSub}>Go to Profile and create User and ShipId to be able to publish, don't forget to upload a picture!</Text>
                 </View> 
                 {
                     isLoadingUserData && (
@@ -44,9 +45,9 @@ const CreateScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={[styles.buttonContainer, {opacity: isButtonDisabled ? 0.5 : 1}]} disabled={isButtonDisabled} onPress={onHandlerPublicationPublicate}>
-                    <Text style={styles.textButton}>Create</Text>
+            <View style={width > 660 ? styles.buttonContainerTablet : styles.buttonContainer}>
+                <TouchableOpacity style={[width > 660 ? styles.buttonContainerTablet : styles.buttonContainer, {opacity: isButtonDisabled ? 0.5 : 1}]} disabled={isButtonDisabled} onPress={onHandlerPublicationPublicate}>
+                    <Text style={width > 660 ? styles.textButtonTablet : styles.textButton}>Create</Text>
                 </TouchableOpacity>
             </View>
             <TextInput
@@ -55,7 +56,7 @@ const CreateScreen = ({navigation}) => {
             placeholderTextColor={COLORS.textWhite}
             autoCapitalize='none'
             autoCorrect={false}
-            style={styles.input}
+            style={width > 660 ? styles.inputTablet : styles.input}
             textAlignVertical='top'
             maxLength={320}
             value={publicationText}

@@ -3,10 +3,14 @@ import { Menu } from "../screens";
 import PublicationDetail from "../screens/publicationDetail";
 import { Header } from "../components";
 import { COLORS } from "../themes";
+import { useEffect, useState } from "react";
+import { fetchSession } from "../db";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
 function MenuNavigator() {
+
     return (
         <Stack.Navigator initialRouteName="Menu" 
             screenOptions={{
