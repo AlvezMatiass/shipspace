@@ -9,10 +9,8 @@ import { init } from './db';
 
 init()
   .then(() => {
-    console.log('se inicio')
   })
   .catch((err) => {
-    console.log('fallo')
   })
 
 export default function App() {

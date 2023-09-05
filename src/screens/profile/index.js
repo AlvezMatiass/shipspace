@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator, Image, FlatList, RefreshControl, useWindowDimensions } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { styles } from './styles';
 import { useGetProfileQuery } from '../../store/users/api';
 import { fetchPublications, deletePublication } from '../../store/publications/publication.slice';
-import { useDispatch, useSelector } from 'react-redux';
-import { COLORS } from '../../themes';
-import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { logout } from '../../store/auth/auth.slice';
 import { deleteSession } from '../../db';
+import { COLORS } from '../../themes';
 
 const Profile = ({ navigation, route }) => {
-
     const dispatch = useDispatch();
-    const {width} = useWindowDimensions()
+    const { width } = useWindowDimensions();
+    
     const localId = useSelector((state) => state.auth.user.localId);
     const userInfo = useSelector((state) => state.user.data);
 
@@ -49,7 +49,7 @@ const Profile = ({ navigation, route }) => {
 
     const onLogout = async () => {
         dispatch(logout())
-        await deleteSession({localId})
+        await deleteSession({ localId })
     }
 
     if (!userInfo?.username && !data?.username) {
@@ -65,7 +65,7 @@ const Profile = ({ navigation, route }) => {
                 </TouchableOpacity>
             </View>
         )
-    }   
+    }
 
     return (
         <View style={styles.container}>
@@ -88,9 +88,9 @@ const Profile = ({ navigation, route }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-                <View style={width > 660 ? styles.yourPublicationsTablet : styles.yourPublications}>
-                    <Text style={width > 660 ? styles.yourPublicationsTextTablet : styles.yourPublicationsText}>Your Publications</Text>
-                </View>
+            <View style={width > 660 ? styles.yourPublicationsTablet : styles.yourPublications}>
+                <Text style={width > 660 ? styles.yourPublicationsTextTablet : styles.yourPublicationsText}>Your Publications</Text>
+            </View>
             <FlatList
                 data={profilePublication.filter(item => item.localId === localId).slice().reverse()}
                 renderItem={({ item }) => (
@@ -127,7 +127,8 @@ const Profile = ({ navigation, route }) => {
                 }
             />
         </View>
-    )
+    );
 }
 
 export default Profile;
+
