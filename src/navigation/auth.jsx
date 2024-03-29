@@ -1,12 +1,15 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Auth } from "../screens";
+import { AuthLogin, AuthRegister, RegisterSuccess, SelectLoginRegister } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
 function AuthNavigator() {
     return (
-        <Stack.Navigator initialRouteName='Auth' screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Auth" component={ Auth } />
+        <Stack.Navigator initialRouteName='Select' screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Select" component={ SelectLoginRegister } />
+            <Stack.Screen name="Login" component={ AuthLogin } />
+            <Stack.Screen name="Register" component={AuthRegister} />
+            <Stack.Screen name="RegisterSuccess" component={ RegisterSuccess } />
         </Stack.Navigator>
     )
 }

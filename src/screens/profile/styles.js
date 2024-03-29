@@ -103,15 +103,16 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         color: COLORS.textWhite,
         fontFamily: 'Inter-Bold',
-        fontSize: 20,
+        fontSize: 18,
         marginHorizontal: 60,
     },
     createProfileSubText: {
+        width: 240,
         textAlign: 'center',
         color: COLORS.textWhite,
         fontFamily: 'Inter-Medium',
         opacity: 0.4,
-        fontSize: 12,
+        fontSize: 10,
         marginHorizontal: 42,
     },
     createProfileSubTextTablet: {
@@ -124,10 +125,12 @@ export const styles = StyleSheet.create({
         marginTop: 8
     },
     createProfileButtonContainer: {
+        width: 200,
         paddingVertical: 6,
         paddingHorizontal: 12,
-        marginTop: 12,
+        margin: 9,
         backgroundColor: COLORS.textWhite,
+        borderRadius: 100
     },
     createProfileButtonContainerTablet: {
         paddingVertical: 8,

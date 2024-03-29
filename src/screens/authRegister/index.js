@@ -4,36 +4,35 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/auth/auth.slice';
 import { insertDataUser } from '../../db';
 import { useSignInMutation, useSignUpMutation } from '../../store/auth/api';
+import { AntDesign } from '@expo/vector-icons';
 import { styles } from './style';
 import { COLORS } from '../../themes';
 
-const Auth = () => {
+const AuthRegister = ({ navigation }) => {
+
     const dispatch = useDispatch();
     const { width } = useWindowDimensions();
 
-    const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const headerTitle = isLogin ? 'Login' : 'Register';
-    const buttonTitle = isLogin ? 'Login' : 'Register';
-    const messageText = isLogin ? 'Need an account?' : 'Already have an account?';
-
+    const [signUp, { isSuccess }] = useSignUpMutation();
     const [signIn, { data }] = useSignInMutation();
-    const [signUp] = useSignUpMutation();
 
     const onHandlerAuth = async () => {
         try {
-            if (isLogin) {
-                signIn({ email, password });
-            } else {
-                signUp({ email, password });
-                setIsLogin(!isLogin);
-            }
+            signUp({ email, password });
+            navigation.navigate('RegisterSuccess', {email, password})
+            setPassword('');
+            setEmail('');
         } catch (error) {
             console.error(error);
         }
     };
+
+    const onHandlerGoBack = () => {
+        navigation.navigate('Select')
+    }
 
     useEffect(() => {
         if (data) {
@@ -49,20 +48,23 @@ const Auth = () => {
     }, [data]);
 
     const onHandlerChangeAuth = () => {
-        setIsLogin(!isLogin);
+        navigation.navigate('Login')
         setPassword('');
         setEmail('');
     };
 
     return (
         <View style={styles.container}>
+            <TouchableOpacity style={styles.backButtonContainer} onPress={onHandlerGoBack}>
+                <AntDesign name="arrowleft" size={24} color={COLORS.textWhite} />
+            </TouchableOpacity>
             <View style={width > 660 ? styles.contentTablet : styles.content}>
-                <Text style={width > 660 ? styles.headerTablet : styles.header}>{headerTitle}</Text>
-                <Text style={width > 660 ? styles.labelTablet : styles.label}>Email</Text>
+                <Text style={width > 660 ? styles.headerTablet : styles.header}>Register</Text>
+                <Text style={width > 660 ? styles.labelTablet : styles.labelEmail}>Email</Text>
                 <TextInput
                     style={width > 660 ? styles.inputTablet : styles.input}
-                    placeholder="email@domain.com"
-                    placeholderTextColor={COLORS.textWhite}
+                    placeholder=""
+                    placeholderTextColor={COLORS.gray}
                     autoCapitalize="none"
                     autoCorrect={false}
                     value={email}
@@ -70,10 +72,10 @@ const Auth = () => {
                         setEmail(text);
                     }}
                 />
-                <Text style={width > 660 ? styles.labelTablet : styles.label}>Password</Text>
+                <Text style={width > 660 ? styles.labelTablet : styles.labelPassword}>Password</Text>
                 <TextInput
                     style={width > 660 ? styles.inputTablet : styles.input}
-                    placeholder="**********"
+                    placeholder=""
                     placeholderTextColor={COLORS.textWhite}
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -86,16 +88,16 @@ const Auth = () => {
             </View>
             <View style={width > 660 ? styles.buttonContainerTablet : styles.buttonContainer}>
                 <TouchableOpacity style={width > 660 ? styles.buttonTablet : styles.button} onPress={onHandlerAuth}>
-                    <Text style={width > 660 ? styles.buttonTextTablet : styles.buttonText}>{buttonTitle}</Text>
+                    <Text style={width > 660 ? styles.buttonTextTablet : styles.buttonText}>Register</Text>
                 </TouchableOpacity>
             </View>
             <View style={width > 660 ? styles.linkContainerTablet : styles.linkContainer}>
                 <TouchableOpacity style={width > 660 ? styles.linkTablet : styles.link} onPress={onHandlerChangeAuth}>
-                    <Text style={width > 660 ? styles.linkTextTablet : styles.linkText}>{messageText}</Text>
+                    <Text style={width > 660 ? styles.linkTextTablet : styles.linkText}>Already have an account?</Text>
                 </TouchableOpacity>
             </View>
         </View>
     );
 };
 
-export default Auth;
+export default AuthRegister;

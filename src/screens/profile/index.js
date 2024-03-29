@@ -55,11 +55,11 @@ const Profile = ({ navigation, route }) => {
     if (!userInfo?.username && !data?.username) {
         return (
             <View style={width > 660 ? styles.createContainerTablet : styles.createContainer}>
-                <Text style={width > 660 ? styles.createProfileTextTablet : styles.createProfileText}>Welcome, it's time to create your profile. Select a username, a Shipid, and a profile picture to continue.</Text>
-                <Text style={width > 660 ? styles.createProfileSubTextTablet : styles.createProfileSubText}>WARNING: Be careful, you can create your profile and select an image once per account!</Text>
+                <Text style={width > 660 ? styles.createProfileTextTablet : styles.createProfileText}>Welcome, it's time to create your profile!</Text>
                 <TouchableOpacity onPress={onHandlerCreateProfile} style={width > 660 ? styles.createProfileButtonContainerTablet : styles.createProfileButtonContainer}>
                     <Text style={width > 660 ? styles.createProfileButtonTextTablet : styles.createProfileButtonText}>Create Profile</Text>
                 </TouchableOpacity>
+                <Text style={width > 660 ? styles.createProfileSubTextTablet : styles.createProfileSubText}>WARNING: Be careful, you can create your profile and select an image once per account!</Text>
                 <TouchableOpacity onPress={onLogout} style={width > 660 ? styles.logoutContainerDosTablet : styles.logoutContainerDos}>
                     <Entypo name="log-out" size={width > 660 ? 28 : 22} color={COLORS.textWhite} />
                 </TouchableOpacity>
